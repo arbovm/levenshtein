@@ -28,3 +28,9 @@ func main() {
 }
 
 ```
+
+Documentation
+-------------
+
+Located [here](http://godoc.org/github.com/arbovm/levenshtein)
+
