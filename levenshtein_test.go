@@ -1,3 +1,7 @@
+// Copyright (c) 2015, Arbo von Monkiewitsch All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
 package levenshtein
 
 import (
@@ -10,12 +14,12 @@ var distanceTests = []struct {
 	second string
 	wanted int
 }{
-	{"a",    "a",  0},
-	{"ab",  "ab",  0},
-	{"ab",  "aa",  1},
-	{"ab",  "aa",  1},
-	{"ab", "aaa",  2},
-	{"bbb",  "a",  3},
+	{"a", "a", 0},
+	{"ab", "ab", 0},
+	{"ab", "aa", 1},
+	{"ab", "aa", 1},
+	{"ab", "aaa", 2},
+	{"bbb", "a", 3},
 	{"kitten", "sitting", 3},
 }
 
