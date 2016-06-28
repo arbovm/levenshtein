@@ -22,6 +22,7 @@ var distanceTests = []struct {
 	{"bbb", "a", 3},
 	{"kitten", "sitting", 3},
 	{"aa", "aü", 1},
+	{"Fön", "Föm", 1},
 }
 
 func TestDistance(t *testing.T) {

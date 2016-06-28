@@ -13,10 +13,13 @@ package levenshtein
 // This implemention is optimized to use O(min(m,n)) space.
 // It is based on the optimized C version found here:
 // http://en.wikibooks.org/wiki/Algorithm_implementation/Strings/Levenshtein_distance#C
-func Distance(s1, s2 string) int {
+func Distance(str1, str2 string) int {
 	var cost, lastdiag, olddiag int
-	len_s1 := len([]rune(s1))
-	len_s2 := len([]rune(s2))
+	s1 := []rune(str1)
+	s2 := []rune(str2)
+
+	len_s1 := len(s1)
+	len_s2 := len(s2)
 
 	column := make([]int, len_s1+1)
 
