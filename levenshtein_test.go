@@ -14,6 +14,8 @@ var distanceTests = []struct {
 	second string
 	wanted int
 }{
+	{"e", "", 1},
+	{"", "e", 1},
 	{"a", "a", 0},
 	{"ab", "ab", 0},
 	{"ab", "aa", 1},

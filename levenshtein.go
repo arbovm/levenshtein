@@ -4,7 +4,7 @@
 
 package levenshtein
 
-// The Levenshtein distance between two strings is defined as the minimum
+// Distance - The Levenshtein distance between two strings is defined as the minimum
 // number of edits needed to transform one string into the other, with the
 // allowable edit operations being insertion, deletion, or substitution of
 // a single character
