@@ -14,47 +14,34 @@ package levenshtein
 // It is based on the optimized C version found here:
 // http://en.wikibooks.org/wiki/Algorithm_implementation/Strings/Levenshtein_distance#C
 func Distance(str1, str2 string) int {
-	var cost, lastdiag, olddiag int
-	s1 := []rune(str1)
-	s2 := []rune(str2)
+	s1, s2 := []rune(str1), []rune(str2)
+	lenS1, lenS2 := len(s1), len(s2)
+	column := make([]int, lenS1+1)
 
-	len_s1 := len(s1)
-	len_s2 := len(s2)
-
-	column := make([]int, len_s1+1)
-
-	for y := 1; y <= len_s1; y++ {
-		column[y] = y
+	for i := range column {
+		column[i] = i // initialise, in case lenS2 is empty
 	}
+	column[0] = lenS2 // in case str1 is empty
 
-	for x := 1; x <= len_s2; x++ {
-		column[0] = x
-		lastdiag = x - 1
-		for y := 1; y <= len_s1; y++ {
-			olddiag = column[y]
-			cost = 0
-			if s1[y-1] != s2[x-1] {
+	for x := 0; x < lenS2; x++ {
+		lastdiag := x
+		for y := 0; y < lenS1; y++ {
+			cost := 0
+			if s1[y] != s2[x] {
 				cost = 1
 			}
-			column[y] = min(
-				column[y]+1,
-				column[y-1]+1,
-				lastdiag+cost)
-			lastdiag = olddiag
+			lastdiag, column[y+1] = column[y+1], min(column[y+1]+1, column[y]+1, lastdiag+cost)
 		}
 	}
-	return column[len_s1]
+	return column[lenS1]
 }
 
 func min(a, b, c int) int {
-	if a < b {
-		if a < c {
-			return a
-		}
-	} else {
-		if b < c {
-			return b
-		}
+	if a < b && a < c {
+		return a
+	}
+	if b < c && b < a {
+		return b
 	}
 	return c
 }
